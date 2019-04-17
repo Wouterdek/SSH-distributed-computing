@@ -43,6 +43,7 @@ install_and_import('paramiko')
 class Worker:
 	def __init__(self, domain):
 		self.domain = domain
+		self.gateway = None
 		pass
 
 	def deploy(self, deployment_listing, target_folder, script_filename, payload_path):
@@ -187,7 +188,9 @@ def deploy_to_workers():
 
 def run():
 	own_domain = sys.argv[sys.argv.index("-name")+1]
-	own_gateway = sys.argv[sys.argv.index("-gateway")+1]
+	own_gateway = None
+	if "-gateway" in sys.argv:
+		own_gateway = sys.argv[sys.argv.index("-gateway")+1]
 	source_dir = sys.argv[sys.argv.index("-source_dir")+1]
 	payload_dir = sys.argv[sys.argv.index("-payload_dir")+1]
 	payload_folder = os.path.join(source_dir, payload_dir)

@@ -41,6 +41,7 @@ install_and_import('paramiko')
 class Worker:
 	def __init__(self, domain):
 		self.domain = domain
+		self.gateway = None
 		pass
 
 	def collect(self, channel=None):
